@@ -1,11 +1,9 @@
 <div class="container" style="padding-top: 10px;">
 
-    <h1><i class="fa fa-code"></i> Ethereum Address
-        <small>View information about an Ethereum Address</small>
-    </h1>
+    <h1><i class="fa fa-code"></i> Ethereum Address</h1>
 <hr>
     <div id="address" class="blockdiv">
-      <div style="font-size: 32px; font-weight: lighter; margin-bottom: 15px; display: inline-block;" align="center"><a onclick="shapeshift_click(this, event);" href="https://shapeshift.io/shifty.html?destination={{addressId}}&amp;output=ETH&amp;apiKey=d2d09a697e768702869520bc27d3f166752bc0b2f8faf0824a834bdfd6f1aa75eab40a93cb8574e6647f42722d8f8cc9319e9d745a08186ec48ef5a4b8a56a3d"><img src="https://shapeshift.io/images/shifty/xs_dark_ss.png" class="ss-button"></a> {{ addressId }}</div><br /><br />
+      <div style="font-size: 32px; font-weight: lighter; margin-bottom: 15px; display: inline-block;" align="center"> {{ addressId }}</div><br /><br />
         <table class="table table-striped">
             <tbody><tr>
                 <th colspan="2" style="text-align:left">Summary</th>
@@ -25,5 +23,43 @@
           </tbody>
       </table>
       <hr>
-      Transaction History Coming Soon
+      <h1><i class="fa fa-exchange"></i> Recent Transactions <small>Transactions in the Ethereum Network</small></h1><br />
+    <div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="thead-inverse">
+            <td>
+                <strong>TX Hash</strong>
+            </td>
+            <td>Block #</td>
+            <td>From</td>
+            <td>To
+            </td>
+            <td>
+                Gas Used
+            </td>
+            <td>
+                Value
+            </td>
+        </thead>
+        <tbody>
+            <tr ng-repeat="tx in recenttransactions track by $index-async" class="animated fadeIn">
+
+              <td style="vertical-align:middle;"><a href="/#/tx/{{ tx.hash }}">{{ tx.hash || "" | truncate : 45 }}</a></td>
+                <td style="vertical-align:middle;">
+                    <a href="/#/block/{{ tx.blockNumber }}">
+                        {{ tx.blockNumber || "" }}
+                    </a>
+                </td>
+                <td style="vertical-align:middle;"><a href="/#/address/{{ tx.from }}">{{ tx.from || "" | truncate : 20 }}</a></td>
+                <td style="vertical-align:middle;"><a href="/#/address/{{ tx.to }}">{{ tx.to || "" | truncate : 20 }}</a></td>
+                <td style="vertical-align:middle;">
+                    {{ tx.gas | gasFormat }}
+                </td>
+                <td style="vertical-align:middle;">
+                    {{ tx.value | BigNum }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 </div></div>
