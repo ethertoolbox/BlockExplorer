@@ -37,6 +37,10 @@ angular.module('ethExplorer', ['ngRoute','ui.bootstrap','filters','ngSanitize'])
                 templateUrl: 'views/transactionInfos.html',
                 controller: 'transactionInfosCtrl'
             }).
+            when('/blocks/:pageId', {
+                templateUrl: 'views/blocksInfos.html',
+                controller: 'blocksInfosCtrl'
+            }).            
             when('/address/:addressId', {
                 templateUrl: 'views/addressInfos.html',
                 controller: 'addressInfosCtrl'
@@ -60,29 +64,7 @@ angular.module('ethExplorer', ['ngRoute','ui.bootstrap','filters','ngSanitize'])
             when('/chain/difficulty', {
                 templateUrl: 'views/api/difficulty.html',
                 controller: 'chainInfosCtrl'
-            }).
-/*
-            // fast = doesn't need to getBlock any block
-            when('/chain/blocknumber', {
-                templateUrl: 'views/api/blocknumber.html',
-                controller: 'fastInfosCtrl'
-            }).
-            when('/chain/supply', {
-                templateUrl: 'views/api/supply.html',
-                controller: 'fastInfosCtrl'
-            }).
-            when('/chain/mined', {
-                templateUrl: 'views/api/mined.html',
-                controller: 'fastInfosCtrl'
-            }).
-
-            // begin of: not yet, see README.md
-            when('/chain/supply/public', {
-                templateUrl: 'views/api/supplypublic.html',
-                controller: 'fastInfosCtrl'
-            }).*/
-            // end of: not yet, see README.md
-
+            }).          
             otherwise({
                 redirectTo: '/'
             });

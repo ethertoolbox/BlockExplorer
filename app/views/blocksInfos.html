@@ -1,0 +1,66 @@
+<div class="container" style="padding-top: 20px;">
+    <div class="card">
+        <div class="card-header"><h1><i class="fa fa-cubes"></i> Blocks <small></h1>
+            <p align="right">
+            <a class="btn btn-primary btn-xs " href="/#/blocks/0">Last</a> 
+            <a class="btn btn-primary btn-xs" href="/#/blocks/{{ pageIdminus }}">Next</a> 
+            <span style="padding: 2px 4px 4px 3px; border: 1px solid #D4D4D4; line-height: 30px; background-color: #EAEAEA; margin-top: 2px; height: 2px;">Page <b>{{ pageId }}</b> of <b>{{ totalpages }}</b></span>
+            <a class="btn btn-default btn-xs logout" href="/#/blocks/{{ pageIdplus }}">Prev</a> 
+            <a class="btn btn-default btn-xs logout" href="/#/blocks/{{ totalpages }}">First</a>
+            </p>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <p class="card-text">
+                    <table class="table table-striped table-hover table-bordered">
+                        <thead class="thead-inverse">
+                            <td>
+                                <strong>Block #</strong>
+                            </td>
+                            <td>Block Hash</td>
+                            <td>Difficulty</td>
+                            <td>Miner</td>
+                            <td>
+                                Size
+                            </td>
+                            <td>
+                                Date
+                            </td>
+                            <td>
+                                # of TXs
+                            </td>
+                            <td>
+                                Gas used
+                            </td>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="block in blocks" class="animated fadeIn">
+                                <td>
+                                    <a href="/#/block/{{ block.number }}">
+                                        <span class="btn btn-sm btn-primary"><i class="fa fa-cube"></i> {{ block.number }}</span>
+                                    </a>
+                                </td>
+                                <td><a href="/#/block/{{ block.hash }}"><span class="btn btn-sm btn-success">{{ block.hash | truncate : 12 }}</span></a></td>
+                                <td style="vertical-align:middle;">{{ block.difficulty | diffFormat }}</td>
+                                <td style="vertical-align:middle;"><a href="/#/address/{{ block.miner }}">{{ block.miner }}</a></td>
+                                <td style="vertical-align:middle;">
+                                    {{ block.size | sizeFormat }}
+                                </td>
+                                <td style="vertical-align:middle;">
+                                    {{ block.timestamp * 1000 | date:'medium' }}
+                                </td>
+                                <td style="vertical-align:middle;">
+                                    {{ block.transactions.length }}
+                                </td>
+                                <td style="vertical-align:middle;">
+                                    {{ block.gasUsed | gasFormat }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </p>
+            </div>
+      </div>    
+    </div>
+    </div>
+    
