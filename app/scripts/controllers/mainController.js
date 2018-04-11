@@ -4,19 +4,19 @@ angular.module('ethExplorer')
     .controller('mainCtrl', function ($rootScope, $scope, $location) {
 
         // Display & update block list
-        getETHRates();
+//        getETHRates();
         updateBlockList();
         updateTXList();
         updateStats();
-        getHashrate();
+//        getHashrate();
 
         web3.eth.filter("latest", function(error, result){
           if (!error) {
-            getETHRates();
+//            getETHRates();
             updateBlockList();
             updateTXList();
             updateStats();
-            getHashrate();
+//            getHashrate();
             $scope.$apply();
           }
         });
@@ -168,7 +168,7 @@ angular.module('ethExplorer')
           catch(err) {$scope.versionWhisper = err.message; }
 }
 
-
+/*
         function getHashrate()	{
           $.getJSON("https://etherchain.org/api/miningEstimator", function(json) {
             var hr = json.data[0].hashRate;
@@ -192,14 +192,15 @@ angular.module('ethExplorer')
             //console.log("Current ETH Market Cap: " + cap);
             $scope.ethmarketcap = cap;
           });
-        }
+        }  
+ */
 
         function updateTXList() {
             var currentTXnumber = web3.eth.blockNumber;
             $scope.txNumber = currentTXnumber;
             $scope.recenttransactions = [];
             var count=0;
-            for (var i=0; i < currentTXnumber && currentTXnumber - i >= 0; i++) {
+            for (var i=0; currentTXnumber - i >= 0; i++) {
               var x = web3.eth.getTransactionFromBlock(currentTXnumber - i);
               if (x!=null) {$scope.recenttransactions.push(x); count++;};
               if (count>30) break;

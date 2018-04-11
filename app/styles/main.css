@@ -3,6 +3,7 @@
 
 body {
   font-family: 'Open Sans', sans-serif !important;
+  background-color: #F7F7F7 !important;
 }
 .menu {
   list-style: none;
@@ -34,37 +35,44 @@ body {
 }
 
 .navbar-dark {
-  background-color: #293640;
-  color: #FFF;
+  background-color: #EDEDED;
+  color: #5A738E;
 }
 .navbar a {
-  color: #FFF;
+  color: #5A738E;
 }
 .navbar a:hover {
-  color: #FFF;
+  color: #5A738E;
 }
 
 .navbar a:visited {
-  color: #FFF;
+  color: #5A738E;
+}
+
+.navbar-form {
+  padding: 0px 0px !important;
+}
+.navbar-form .input-group {
+  width: 40vw  !important;
 }
 
 .title {
-  color: #FFF;
+  color: #5A738E;
   font-weight: bold;
 }
 
 input.searchi {
-  background-color: #293640 !important;
+  background-color: #EDEDED !important;
   border: 2px solid #384a58;
-  color: #fff;
+  color: #5A738E;
   width: 100% !important;
 }
 
 input.searchimain {
   height: 50px;
-  background-color: #293640 !important;
+  background-color: #EDEDED !important;
   border: 2px solid #384a58;
-  color: #fff;
+  color: #5A738E;
   width: 100%;
 }
 
@@ -85,8 +93,8 @@ input.searchimain {
 }
 
 .thead-inverse {
-  background-color: #293640;
-  color: #FFF;
+  background-color: #EDEDED;
+  color: #5A738E;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
@@ -142,6 +150,13 @@ input.searchimain {
   width:100%;
 }
 
-// make the rpc command dialogue wider
+.card {
+  background-color: #fff; 
+  border: 1px solid #999;
+  border-radius:1rem;
+  padding: 10px;
+}
+
+/* make the rpc command dialogue wider */
 #connectwarning {width:900px;}
 #connectwarning-dialog   {width:900px;}
