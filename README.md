@@ -1,6 +1,6 @@
 # BlockExplorer based off github.com/carsenk/explorer
 
-![BlockExplorer Screenshot](http://i.imgur.com/wgROAS9.png)
+![BlockExplorer Screenshot](http://i.imgur.com/C61Ad7w.jpg)
 
 ## License
 
