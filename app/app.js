@@ -36,6 +36,10 @@ angular.module('ethExplorer', ['ngRoute','ui.bootstrap','filters','ngSanitize'])
             when('/tx/:transactionId', {
                 templateUrl: 'views/transactionInfos.html',
                 controller: 'transactionInfosCtrl'
+            })
+            . when('/txs/:transactionId', {
+                templateUrl: 'views/transactionsInfos.html',
+                controller: 'transactionsInfosCtrl'
             }).
             when('/blocks/:pageId', {
                 templateUrl: 'views/blocksInfos.html',

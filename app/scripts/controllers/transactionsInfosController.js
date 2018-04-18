@@ -1,15 +1,15 @@
 var BigNumber = require('bignumber.js');
 angular.module('ethExplorer')
-    .controller('blocksInfosCtrl', function ($rootScope, $scope, $location,$routeParams,$q) {
+    .controller('transactionsInfosCtrl', function ($rootScope, $scope, $location,$routeParams,$q) {
        
         $scope.init=function()
         {
-            $scope.pageId=$routeParams.pageId;
-            if($scope.pageId!==undefined ) {
-                if (parseInt($scope.pageId)<0){
-                    $scope.pageId=0;
+            $scope.transactionId=$routeParams.transactionId;
+            if($scope.transactionId!==undefined ) {
+                if (parseInt($scope.transactionId)<0){
+                    $scope.transactionId=0;
                 }
-                updateBlockList();
+                updateTXList();
             }
         }
         
@@ -17,7 +17,7 @@ angular.module('ethExplorer')
 
         web3.eth.filter("latest", function(error, result){
             if (!error) {
-                updateBlockList();
+                updateTXList();
               $scope.$apply();
             }
           });
@@ -27,10 +27,10 @@ angular.module('ethExplorer')
 
 
             if (requestStr!==undefined){
-                var regexpBlock = /[0-9]{1,7}?/;;
-                result = regexpBlock.test(requestStr);
+                var regexpTx = /[0-9a-zA-Z]{64}?/;
+                result = regexpTx.test(requestStr);
                 if (result===true){
-                    goToBlockInfos(requestStr)
+                    goToTxInfos(requestStr)
                 }
             }
             else{
@@ -38,22 +38,28 @@ angular.module('ethExplorer')
             }
         };
 
-        function goToBlockInfos(requestStr){
-            $location.path('/block/'+requestStr);
-        }
+        function goToTxInfos (requestStr){
+            $location.path('/tx/'+requestStr);
+       }
 
-       function updateBlockList() {
-        var currentBlockNumber = web3.eth.blockNumber;
-        $scope.blockNumber = currentBlockNumber;
-        $scope.blocks = [];
-        var currentpage=$scope.pageId;
-        for (var i=0; i < 30 && currentBlockNumber-(currentpage*30) - i >= 0; i++) {
-            $scope.blocks.push(web3.eth.getBlock(currentBlockNumber-(currentpage*30) - i));
+       function updateTXList() {
+        $scope.lastblock = web3.eth.blockNumber;
+        $scope.recenttransactions = [];
+        var blocknumber=$scope.transactionId;
+        var count=0;
+        for (var i=0; blocknumber - i >= 0; i++) {
+          var y = web3.eth.getBlock(blocknumber - i);
+          if (y.transactions.length>0){
+            for (var t=0;t<y.transactions.length;t++){
+              var x = web3.eth.getTransaction(y.transactions[t]);
+              if (x!=null) {$scope.recenttransactions.push(x); count++;};
             }
-            $scope.pageIdplus=parseInt($scope.pageId)+1;
-            $scope.pageIdminus=parseInt($scope.pageId)-1;
-            $scope.totalpages=parseInt(currentBlockNumber/30);
+            if (count>0) break;
+          }
+          if (count>0) break;
+          $scope.blocknumber=blocknumber - i-2;
         }
+    }
     });
 
     angular.module('filters', []).

@@ -29,4 +29,5 @@ Then visit http://localhost:8000 in your browser of choice after you npm start t
 ## Updates since original carsenk/explorer base:
 
 - Added address transaction history
+- Added pagination on blocks list
 - Added pagination on transactions list

@@ -1,13 +1,18 @@
-<div class="container" style="padding-top: 20px;">
+<div class="container">
     <div class="card">
-        <div class="card-header"><h1><i class="fa fa-cubes"></i> Blocks <small></h1>
-            <p align="right">
-            <a class="btn btn-primary btn-xs "  href="/#/blocks/0">Last</a> 
-            <a class="btn btn-primary btn-xs" disabled="disabled" href="/#/blocks/0">Next</a> 
-            <span style="padding: 2px 4px 4px 3px; border: 1px solid #D4D4D4; line-height: 30px; background-color: #EAEAEA; margin-top: 2px; height: 2px;">Page <b>0</b> of <b>{{ totalpages }}</b></span>
-            <a class="btn btn-default btn-xs logout" href="/#/blocks/{{ pageIdplus }}">Prev</a> 
-            <a class="btn btn-default btn-xs logout" href="/#/blocks/{{ totalpages }}">First</a>
-            </p>
+        <div class="card-header">
+            <div>
+                <table class="table"><thead class="thead-inverse"><td>
+                    <i class="fa fa-cubes" style="font-size:xx-large">Blocks</i></td><td align="right">
+                    <p align="right"><a class="btn btn-primary btn-xs "  href="/#/blocks/0">Last</a> 
+                    <a class="btn btn-primary btn-xs" disabled="disabled" href="/#/blocks/0">Next</a> 
+                    <span style="padding: 2px 4px 4px 3px; border: 1px solid #D4D4D4; line-height: 30px; background-color: #EAEAEA; margin-top: 2px; height: 2px;">Page <b>{{ totalpages }}</b> of <b>{{ totalpages }}</b></span>
+                    <a class="btn btn-default btn-xs logout" href="/#/blocks/{{ pageIdplus }}">Prev</a> 
+                    <a class="btn btn-default btn-xs logout" href="/#/blocks/{{ totalpages }}">First</a>
+                    </p>
+                    </td></thead>
+                </table>
+            </div>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -17,9 +22,9 @@
                             <td>
                                 <strong>Block #</strong>
                             </td>
-                            <td>Block Hash</td>
-                            <td>Difficulty</td>
                             <td>Miner</td>
+                            <td>Difficulty</td>
+                            <td>Block Hash</td>
                             <td>
                                 Size
                             </td>
@@ -40,9 +45,9 @@
                                         <span class="btn btn-sm btn-primary"><i class="fa fa-cube"></i> {{ block.number }}</span>
                                     </a>
                                 </td>
-                                <td><a href="/#/block/{{ block.hash }}"><span class="btn btn-sm btn-success">{{ block.hash | truncate : 12 }}</span></a></td>
+                                <td><a href="/#/address/{{ block.miner }}"><span class="btn btn-sm btn-success">{{ block.miner | truncate : 12 }}</span></a></td>
                                 <td style="vertical-align:middle;">{{ block.difficulty | diffFormat }}</td>
-                                <td style="vertical-align:middle;"><a href="/#/address/{{ block.miner }}">{{ block.miner }}</a></td>
+                                <td style="vertical-align:middle;"><a href="/#/block/{{ block.hash }}">{{ block.hash }}</a></td>
                                 <td style="vertical-align:middle;">
                                     {{ block.size | sizeFormat }}
                                 </td>
@@ -61,10 +66,27 @@
                 </p>
             </div>
         </div>
-  </div><br/>
-  <div class="card">
-    <h1 class="card-header"><i class="fa fa-exchange"></i> Recent Transactions <small>Transactions in the Ethereum Network</small></h1><br />
-    <div class="table-responsive">
+        </div><br/>
+        <div class="card">
+            <div class="card-header">
+                <div>
+                <table class="table">
+                    <thead class="thead-inverse">
+                        <td>
+                            <i class="fa fa-exchange" style="font-size:xx-large">Transactions in last block {{ blocknumber +1}} </i>
+                        </td>
+                        <td align="right">
+                            <p align="right">
+                            <a class="btn btn-primary btn-xs "  href="/#/txs/{{pageIdplus}}">Last</a> 
+                            <a class="btn btn-primary btn-xs" disabled="disabled" href="/#/txs/0">Next</a> 
+                            <a class="btn btn-default btn-xs logout" href="/#/txs/{{ blocknumber }}">Prev</a> 
+                            </p>
+                        </td>
+                    </thead>
+                </table>
+            </div>
+            </div>
+        <div class="table-responsive">
     <p class="card-text">        
     <table class="table table-striped table-hover table-bordered">
         <thead class="thead-inverse">

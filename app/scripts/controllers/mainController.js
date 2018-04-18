@@ -198,12 +198,20 @@ angular.module('ethExplorer')
         function updateTXList() {
             var currentTXnumber = web3.eth.blockNumber;
             $scope.txNumber = currentTXnumber;
+            $scope.pageIdplus=currentTXnumber;
             $scope.recenttransactions = [];
             var count=0;
             for (var i=0; currentTXnumber - i >= 0; i++) {
-              var x = web3.eth.getTransactionFromBlock(currentTXnumber - i);
-              if (x!=null) {$scope.recenttransactions.push(x); count++;};
-              if (count>30) break;
+              var y = web3.eth.getBlock(currentTXnumber - i);
+              if (y.transactions.length>0){
+                for (var t=0;t<y.transactions.length;t++){
+                  var x = web3.eth.getTransaction(y.transactions[t]);
+                  if (x!=null) {$scope.recenttransactions.push(x); count++;};
+                }
+                if (count>0) break;
+              }
+              if (count>0) break;
+              $scope.blocknumber=currentTXnumber - i-2;
             }
         }
 
@@ -211,11 +219,11 @@ angular.module('ethExplorer')
             var currentBlockNumber = web3.eth.blockNumber;
             $scope.blockNumber = currentBlockNumber;
             $scope.blocks = [];
-            for (var i=0; i < 30 && currentBlockNumber - i >= 0; i++) {
+            for (var i=0; i < 10 && currentBlockNumber - i >= 0; i++) {
               $scope.blocks.push(web3.eth.getBlock(currentBlockNumber - i));
             }
             $scope.pageIdplus=1;
-            $scope.totalpages=parseInt(currentBlockNumber/30);
+            $scope.totalpages=parseInt(currentBlockNumber/10);
         }
 
     });

@@ -1,14 +1,23 @@
 <div class="container" style="padding-top: 20px;">
     <div class="card">
-        <div class="card-header"><h1><i class="fa fa-cubes"></i> Blocks <small></h1>
-            <p align="right">
-            <a class="btn btn-primary btn-xs " href="/#/blocks/0">Last</a> 
-            <a class="btn btn-primary btn-xs" href="/#/blocks/{{ pageIdminus }}">Next</a> 
-            <span style="padding: 2px 4px 4px 3px; border: 1px solid #D4D4D4; line-height: 30px; background-color: #EAEAEA; margin-top: 2px; height: 2px;">Page <b>{{ pageId }}</b> of <b>{{ totalpages }}</b></span>
-            <a class="btn btn-default btn-xs logout" href="/#/blocks/{{ pageIdplus }}">Prev</a> 
-            <a class="btn btn-default btn-xs logout" href="/#/blocks/{{ totalpages }}">First</a>
-            </p>
-        </div>
+            <div class="card-header">
+                    <div>
+                        <table class="table"><thead class="thead-inverse">
+                            <td>
+                                <i class="fa fa-cubes" style="font-size:xx-large">Blocks</i>
+                            </td>
+                            <td align="right">
+                                <p align="right">
+                                    <a class="btn btn-primary btn-xs "  href="/#/blocks/0">Last</a> 
+                                    <a class="btn btn-primary btn-xs" disabled="disabled" href="/#/blocks/0">Next</a> 
+                                    <span style="padding: 2px 4px 4px 3px; border: 1px solid #D4D4D4; line-height: 30px; background-color: #EAEAEA; margin-top: 2px; height: 2px;">Page <b>{{ totalpages }}</b> of <b>{{ totalpages }}</b></span>
+                                    <a class="btn btn-default btn-xs logout" href="/#/blocks/{{ pageIdplus }}">Prev</a> 
+                                    <a class="btn btn-default btn-xs logout" href="/#/blocks/{{ totalpages }}">First</a>
+                                </p>
+                            </td></thead>
+                        </table>
+                    </div>
+                </div>
         <div class="card-body">
             <div class="table-responsive">
                 <p class="card-text">
