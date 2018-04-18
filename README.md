@@ -1,6 +1,6 @@
 # BlockExplorer based off github.com/carsenk/explorer
 
-![BlockExplorer Screenshot](https://i.imgur.com/0bl4uTK.jpg)
+![BlockExplorer Screenshot](https://i.imgur.com/NIBw8KF.png)
 
 ## License
 
