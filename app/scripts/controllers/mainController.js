@@ -219,11 +219,11 @@ angular.module('ethExplorer')
             var currentBlockNumber = web3.eth.blockNumber;
             $scope.blockNumber = currentBlockNumber;
             $scope.blocks = [];
-            for (var i=0; i < 10 && currentBlockNumber - i >= 0; i++) {
+            for (var i=0; i < 30 && currentBlockNumber - i >= 0; i++) {
               $scope.blocks.push(web3.eth.getBlock(currentBlockNumber - i));
             }
-            $scope.pageIdplus=1;
-            $scope.totalpages=parseInt(currentBlockNumber/10);
+            $scope.previousblock=1;
+            $scope.totalpages=parseInt(currentBlockNumber/30);
         }
 
     });

@@ -50,9 +50,9 @@ angular.module('ethExplorer')
         for (var i=0; i < 30 && currentBlockNumber-(currentpage*30) - i >= 0; i++) {
             $scope.blocks.push(web3.eth.getBlock(currentBlockNumber-(currentpage*30) - i));
             }
-            $scope.pageIdplus=parseInt($scope.pageId)+1;
-            $scope.pageIdminus=parseInt($scope.pageId)-1;
+            $scope.pageIdminus=parseInt($scope.pageId)>0?parseInt($scope.pageId)-1:parseInt($scope.pageId);
             $scope.totalpages=parseInt(currentBlockNumber/30);
+            $scope.pageIdplus=parseInt($scope.pageId)<$scope.totalpages?parseInt($scope.pageId)+1:parseInt($scope.pageId);
         }
     });
 
